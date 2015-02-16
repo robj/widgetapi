@@ -101,6 +101,27 @@ describe "API Widget integration" do
     end
   
 
+    it "should get and delete a widget if authorized" do
+
+
+        auth_token = 's3cr3t'
+        widget = FactoryGirl.create(:widget)
+
+        get '/api/widgets'
+        assert last_response.successful?
+        widget_json =  last_response_json['widgets'].first
+        widget_id = widget_json['id']
+
+        delete "/api/widgets/#{widget_id}", {auth_token: 'incorrect'}
+        assert last_response.client_error?
+        assert last_response.status.must_equal 401 #unauthorized
+ 
+        delete "/api/widgets/#{widget_id}", {auth_token: auth_token}
+        assert last_response.successful?
+        assert last_response.status.must_equal 204 #no_content
+
+
+    end
 
 
 

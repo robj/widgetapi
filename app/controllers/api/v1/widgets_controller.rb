@@ -70,6 +70,31 @@ class Api::V1::WidgetsController < ApplicationController
     end
 
 
+    def destroy
+
+
+        return head :unauthorized unless (params.has_key?('auth_token') && params[:auth_token] == 's3cr3t')
+
+
+        widget = Widget.find(params[:id])
+
+        if widget.delete
+
+            head :no_content
+
+        else
+
+            head :internal_server_error
+
+        end
+            
+
+        
+
+
+    end
+
+
 
 
 
