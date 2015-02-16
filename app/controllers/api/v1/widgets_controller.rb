@@ -87,9 +87,6 @@ class Api::V1::WidgetsController < ApplicationController
             head :internal_server_error
 
         end
-            
-
-        
 
 
     end
