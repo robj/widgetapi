@@ -1,3 +1,3 @@
 class WidgetSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :supplier, :cost
 end
