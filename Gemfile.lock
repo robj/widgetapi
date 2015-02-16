@@ -38,6 +38,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.0)
+    database_cleaner (1.0.1)
     erubis (2.7.0)
     execjs (2.3.0)
     hike (1.2.3)
@@ -117,8 +118,11 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   coffee-rails (~> 4.0.0)
+  database_cleaner
   jbuilder (~> 2.0)
   jquery-rails
+  minitest
+  rack-test
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

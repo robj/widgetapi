@@ -40,3 +40,15 @@ gem 'spring',        group: :development
 
 
 gem 'active_model_serializers'
+
+
+group :development, :test do
+
+  gem 'minitest'
+  gem "rack-test", require: "rack/test"
+  gem 'database_cleaner'
+
+
+end
+
+
