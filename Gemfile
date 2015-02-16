@@ -48,6 +48,7 @@ group :development, :test do
   gem "rack-test", require: "rack/test"
   gem 'database_cleaner'
   gem 'factory_girl'
+  gem 'random-word'
 
 
 end
