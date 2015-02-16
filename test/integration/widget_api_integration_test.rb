@@ -43,6 +43,67 @@ describe "API Widget integration" do
     end
 
 
+    it "should create a new widget" do
+
+
+        widget = { name: 'widgee', supplier: 'widgsoft', cost: 32 }
+
+        post '/api/widgets', {widget: widget}
+        assert last_response.successful?
+        assert last_response_json['widget']['name'].must_equal 'widgee'
+
+
+
+    end
+
+
+
+    it "should get and update a widget" do
+
+
+        widget = FactoryGirl.create(:widget)
+
+        get '/api/widgets'
+        assert last_response.successful?
+        widget_json =  last_response_json['widgets'].first
+
+        widget_id = widget_json['id']
+        widget_json['supplier'] = 'supplierX'
+
+        put "/api/widgets/#{widget_id}", {widget: widget_json}
+        assert last_response.successful?
+        assert last_response_json['widget']['supplier'].must_equal 'supplierX'
+
+
+    end
+
+
+
+    it "should get and update a widget, ensuring strong_params prevents name being updated" do
+
+
+        widget = FactoryGirl.create(:widget)
+
+        get '/api/widgets'
+        assert last_response.successful?
+        widget_json =  last_response_json['widgets'].first
+
+        widget_id = widget_json['id']
+        widget_original_name =  widget_json['name'] 
+       
+        widget_json['name'] = 'nameX'
+        put "/api/widgets/#{widget_id}", {widget: widget_json}
+
+        assert last_response.successful?
+        assert last_response_json['widget']['name'].must_equal widget_original_name
+
+
+    end
+  
+
+
+
+
 
 end
 
