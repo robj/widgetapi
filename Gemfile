@@ -47,6 +47,7 @@ group :development, :test do
   gem 'minitest'
   gem "rack-test", require: "rack/test"
   gem 'database_cleaner'
+  gem 'factory_girl'
 
 
 end
